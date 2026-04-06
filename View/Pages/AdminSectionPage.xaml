@@ -1,0 +1,49 @@
+﻿<Page x:Class="Kursovaya.View.Pages.AdminSectionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kursovaya.View.Pages"
+      mc:Ignorable="d" 
+       d:DesignHeight="420" d:DesignWidth="970"
+  Title="SectionPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <ListBox  Background="Transparent" Name="SectionLb"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" SelectionChanged="SectionLb_SelectionChanged"  >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+
+
+                        <StackPanel  Orientation="Vertical" Width="300" Margin="50 10 30 0">
+                            <Image Source="{Binding Photo}" Height="200" Width="200"/>
+                            <TextBlock Text="{Binding Title}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Button Name="AddSectionBtn" Content="Добавить" Width="180" Margin="5 0 5 0" Click="AddSectionBtn_Click"/>
+            <Button Name="EditSectionBtn" Content="Изменить" Width="180" Margin="5 0 5 0" Click="EditSectionBtn_Click"/>
+            <Button Name="DeleteSectionBtn" Content="Удалить" Width="180" Margin="5 0 5 0" Click="DeleteSectionBtn_Click"/>
+        </StackPanel>
+       
+    </Grid>
+</Page>

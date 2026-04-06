@@ -1,0 +1,25 @@
+﻿<Window x:Class="Kursovaya.View.Windows.EditNewsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursovaya.View.Windows"
+        mc:Ignorable="d"
+           Title="Редактировать новость" Height="500" Width="600" WindowStartupLocation="CenterScreen" Background="#FFD4DFE7">
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="Заголовок:"/>
+            <TextBox Name="TitleTb" Margin="0,5" Height="40" />
+            <TextBlock Text="Краткое содержание:"/>
+            <TextBox Name="ContentTb" Margin="0,5" Height="100" TextWrapping="Wrap" AcceptsReturn="True"/>
+            <TextBlock Text="Дата:"/>
+            <DatePicker Name="PublishDatePicker" Margin="0,5"/>
+            <TextBlock Text="Фото (путь/ссылка):"/>
+            <TextBox Name="PhotoTb" Margin="0,5" Height="40"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5">
+                <Button Content="Загрузить" Name="LoadFromPCBtn" Click="LoadFromPCBtn_Click"  Width="150"/>
+                <Button Name="EditBtn" Content="Изменить"  Margin="10 0 0 0" Width="150" Click="EditBtn_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

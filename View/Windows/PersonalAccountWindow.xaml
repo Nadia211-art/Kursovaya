@@ -1,0 +1,28 @@
+﻿<Window x:Class="Kursovaya.View.Windows.PersonalAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursovaya.View.Windows"
+        mc:Ignorable="d"
+        Title="Личный кабинет" Height="600" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FFD4DFE7">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Image Source="{Binding Photo}"/>
+        <TextBox Name="FullNameTb" Grid.Row="2" Width="370"/>
+        <DatePicker Name="DateOfBirthDp" Grid.Row="4" Width="370"/>
+        <TextBox Name="PhoneTb" Grid.Row="6" Width="370"/>
+        <TextBox Name="EmailTb" Grid.Row="8" Width="370"/>
+    </Grid> 
+</Window>
