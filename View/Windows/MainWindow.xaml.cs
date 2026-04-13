@@ -1,4 +1,5 @@
-﻿using Kursovaya.View.Pages;
+﻿using Kursovaya.Model;
+using Kursovaya.View.Pages;
 using Kursovaya.View.Windows;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace Kursovaya
     /// </summary>
     public partial class MainWindow : Window
     {
+        private User currentUser;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -58,9 +61,16 @@ namespace Kursovaya
 
         private void PersonalAccountBtn_Click(object sender, RoutedEventArgs e)
         {
-            //PersonalAccountWindow personalAccountWindow = new PersonalAccountWindow(currentUser);
-            //personalAccountWindow.Show();
-            //Close();
+          if (App.currentUser != null)
+{
+    PersonalAccountWindow window = new PersonalAccountWindow(App.currentUser);
+    window.Show();
+}
+else
+{
+    MessageBox.Show("Пользователь не авторизован");
+    // перенаправить на окно входа
+}
         }
     }
 }
