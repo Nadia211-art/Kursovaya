@@ -23,7 +23,7 @@ namespace Kursovaya
     /// </summary>
     public partial class MainWindow : Window
     {
-        private User currentUser;
+      
 
         public MainWindow()
         {
@@ -62,15 +62,15 @@ namespace Kursovaya
         private void PersonalAccountBtn_Click(object sender, RoutedEventArgs e)
         {
           if (App.currentUser != null)
-{
-    PersonalAccountWindow window = new PersonalAccountWindow(App.currentUser);
-    window.Show();
-}
-else
-{
-    MessageBox.Show("Пользователь не авторизован");
-    // перенаправить на окно входа
-}
+          {
+               PersonalAccountWindow personalAccountWindow = new PersonalAccountWindow(App.currentUser);
+                personalAccountWindow.Show();
+          }
+          else
+          {
+               MessageBox.Show("Пользователь не авторизован");
+  
+          }
         }
     }
 }

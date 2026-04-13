@@ -19,14 +19,15 @@
             <Button.Background>
                 <ImageBrush ImageSource="/Resources/Image/icons8-выход-48.png"/>
             </Button.Background>
-            <Button Name="PersonalAccountBtn" Width="35" Height="35" Click="PersonalAccountBtn_Click"  
-BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="60,20,0,20">
-                <Button.Background>
-                    <ImageBrush ImageSource="C:\Users\dns\source\repos\Kursovaya\Resources\Image\icons8-customer-50.png"/>
-                </Button.Background>
-
-            </Button>
         </Button>
+        <Button Name="PersonalAccountBtn" Width="35" Height="35" Click="PersonalAccountBtn_Click_1"
+BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="60,20,0,20">
+            <Button.Background>
+                <ImageBrush ImageSource="C:\Users\dns\source\repos\Kursovaya\Resources\Image\icons8-customer-50.png"/>
+            </Button.Background>
+
+        </Button>
+
         <Grid Grid.Row="1">
 
             <Grid.RowDefinitions>

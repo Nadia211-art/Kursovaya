@@ -55,9 +55,30 @@ namespace Kursovaya.View.Windows
 
         private void PersonalAccountBtn_Click(object sender, RoutedEventArgs e)
         {
-            //PersonalAccountWindow personalAccountWindow = new PersonalAccountWindow(currentUser);  
-            //personalAccountWindow.Show();
-            //Close();
+            if (App.currentUser != null)
+            {
+                PersonalAccountWindow personalAccountWindow = new PersonalAccountWindow(App.currentUser);
+                personalAccountWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не авторизован");
+
+            }
+        }
+
+        private void PersonalAccountBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (App.currentUser != null)
+            {
+                PersonalAccountWindow personalAccountWindow = new PersonalAccountWindow(App.currentUser);
+                personalAccountWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не авторизован");
+
+            }
         }
     }
 }
