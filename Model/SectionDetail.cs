@@ -12,22 +12,13 @@ namespace Kursovaya.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Section
+    public partial class SectionDetail
     {
-        public Section()
-        {
-            this.Application = new HashSet<Application>();
-            this.Schedule = new HashSet<Schedule>();
-            this.SectionDetail = new HashSet<SectionDetail>();
-        }
-    
+        public int Id { get; set; }
         public int IdSection { get; set; }
-        public string Title { get; set; }
-        public string Photo { get; set; }
-        public string Description { get; set; }
+        public int IdCoach { get; set; }
     
-        public virtual ICollection<Application> Application { get; set; }
-        public virtual ICollection<Schedule> Schedule { get; set; }
-        public virtual ICollection<SectionDetail> SectionDetail { get; set; }
+        public virtual Section Section { get; set; }
+        public virtual User User { get; set; }
     }
 }

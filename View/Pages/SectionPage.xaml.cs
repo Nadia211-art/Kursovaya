@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kursovaya.View.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace Kursovaya.View.Pages
     /// </summary>
     public partial class SectionPage : Page
     {
+        
         public SectionPage()
         {
             InitializeComponent();
@@ -28,7 +30,18 @@ namespace Kursovaya.View.Pages
 
         private void SectionLb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Section selectedSection = SectionLb.SelectedItem as Section;
+            // Получаем выбранную секцию
+            Kursovaya.Model.Section selectedSection = SectionLb.SelectedItem as Kursovaya.Model.Section;
+
+            if (selectedSection != null)
+            {
+                // Передаем выбранную секцию в окно деталей
+                SectionDetailWindow sectionDetailWindow = new SectionDetailWindow(selectedSection);
+                sectionDetailWindow.ShowDialog();
+
+                // Сбрасываем выделение
+                SectionLb.SelectedItem = null;
+            }
         }
     }
 }

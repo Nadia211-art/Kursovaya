@@ -31,6 +31,7 @@ namespace Kursovaya.Model
         public DbSet<Role> Role { get; set; }
         public DbSet<Schedule> Schedule { get; set; }
         public DbSet<Section> Section { get; set; }
+        public DbSet<SectionDetail> SectionDetail { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<User> User { get; set; }
     }

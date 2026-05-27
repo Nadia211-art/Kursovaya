@@ -58,6 +58,15 @@
           <Property Name="IdSection" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Photo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SectionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSection" Type="int" Nullable="false" />
+          <Property Name="IdCoach" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -144,6 +153,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SectionDetail_Section">
+          <End Role="Section" Type="Self.Section" Multiplicity="1" />
+          <End Role="SectionDetail" Type="Self.SectionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="IdSection" />
+            </Principal>
+            <Dependent Role="SectionDetail">
+              <PropertyRef Name="IdSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SectionDetail_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="SectionDetail" Type="Self.SectionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="SectionDetail">
+              <PropertyRef Name="IdCoach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Group">
           <End Role="Group" Type="Self.Group" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -175,6 +208,7 @@
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SectionDetail" EntityType="Self.SectionDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Application_Section" Association="Self.FK_Application_Section">
@@ -197,6 +231,14 @@
             <End Role="User" EntitySet="User" />
             <End Role="Schedule" EntitySet="Schedule" />
           </AssociationSet>
+          <AssociationSet Name="FK_SectionDetail_Section" Association="Self.FK_SectionDetail_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="SectionDetail" EntitySet="SectionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionDetail_User" Association="Self.FK_SectionDetail_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="SectionDetail" EntitySet="SectionDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Group" Association="Self.FK_User_Group">
             <End Role="Group" EntitySet="Group" />
             <End Role="User" EntitySet="User" />
@@ -217,6 +259,7 @@
           <EntitySet Name="Role" EntityType="KursovayaModel.Role" />
           <EntitySet Name="Schedule" EntityType="KursovayaModel.Schedule" />
           <EntitySet Name="Section" EntityType="KursovayaModel.Section" />
+          <EntitySet Name="SectionDetail" EntityType="KursovayaModel.SectionDetail" />
           <EntitySet Name="sysdiagrams" EntityType="KursovayaModel.sysdiagrams" />
           <EntitySet Name="User" EntityType="KursovayaModel.User" />
           <AssociationSet Name="FK_Application_Section" Association="KursovayaModel.FK_Application_Section">
@@ -246,6 +289,14 @@
           <AssociationSet Name="FK_Schedule_User" Association="KursovayaModel.FK_Schedule_User">
             <End Role="User" EntitySet="User" />
             <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionDetail_Section" Association="KursovayaModel.FK_SectionDetail_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="SectionDetail" EntitySet="SectionDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SectionDetail_User" Association="KursovayaModel.FK_SectionDetail_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="SectionDetail" EntitySet="SectionDetail" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Application">
@@ -308,8 +359,20 @@
           <Property Name="IdSection" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Application" Relationship="KursovayaModel.FK_Application_Section" FromRole="Section" ToRole="Application" />
           <NavigationProperty Name="Schedule" Relationship="KursovayaModel.FK_Schedule_Section" FromRole="Section" ToRole="Schedule" />
+          <NavigationProperty Name="SectionDetail" Relationship="KursovayaModel.FK_SectionDetail_Section" FromRole="Section" ToRole="SectionDetail" />
+        </EntityType>
+        <EntityType Name="SectionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSection" Type="Int32" Nullable="false" />
+          <Property Name="IdCoach" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Section" Relationship="KursovayaModel.FK_SectionDetail_Section" FromRole="SectionDetail" ToRole="Section" />
+          <NavigationProperty Name="User" Relationship="KursovayaModel.FK_SectionDetail_User" FromRole="SectionDetail" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -340,6 +403,7 @@
           <NavigationProperty Name="News" Relationship="KursovayaModel.FK_News_User" FromRole="User" ToRole="News" />
           <NavigationProperty Name="Role" Relationship="KursovayaModel.FK_User_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Schedule" Relationship="KursovayaModel.FK_Schedule_User" FromRole="User" ToRole="Schedule" />
+          <NavigationProperty Name="SectionDetail" Relationship="KursovayaModel.FK_SectionDetail_User" FromRole="User" ToRole="SectionDetail" />
         </EntityType>
         <Association Name="FK_Application_Section">
           <End Type="KursovayaModel.Section" Role="Section" Multiplicity="1" />
@@ -425,6 +489,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SectionDetail_Section">
+          <End Type="KursovayaModel.Section" Role="Section" Multiplicity="1" />
+          <End Type="KursovayaModel.SectionDetail" Role="SectionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="IdSection" />
+            </Principal>
+            <Dependent Role="SectionDetail">
+              <PropertyRef Name="IdSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SectionDetail_User">
+          <End Type="KursovayaModel.User" Role="User" Multiplicity="1" />
+          <End Type="KursovayaModel.SectionDetail" Role="SectionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="SectionDetail">
+              <PropertyRef Name="IdCoach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -485,9 +573,19 @@
           <EntitySetMapping Name="Section">
             <EntityTypeMapping TypeName="KursovayaModel.Section">
               <MappingFragment StoreEntitySet="Section">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="IdSection" ColumnName="IdSection" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SectionDetail">
+            <EntityTypeMapping TypeName="KursovayaModel.SectionDetail">
+              <MappingFragment StoreEntitySet="SectionDetail">
+                <ScalarProperty Name="IdCoach" ColumnName="IdCoach" />
+                <ScalarProperty Name="IdSection" ColumnName="IdSection" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

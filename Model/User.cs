@@ -19,6 +19,7 @@ namespace Kursovaya.Model
             this.Application = new HashSet<Application>();
             this.News = new HashSet<News>();
             this.Schedule = new HashSet<Schedule>();
+            this.SectionDetail = new HashSet<SectionDetail>();
         }
     
         public int IdUser { get; set; }
@@ -37,5 +38,6 @@ namespace Kursovaya.Model
         public virtual ICollection<News> News { get; set; }
         public virtual Role Role { get; set; }
         public virtual ICollection<Schedule> Schedule { get; set; }
+        public virtual ICollection<SectionDetail> SectionDetail { get; set; }
     }
 }
