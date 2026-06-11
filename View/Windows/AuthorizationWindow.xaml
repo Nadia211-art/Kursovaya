@@ -40,7 +40,7 @@
             <TextBox  Name="LoginTb" Grid.Row="1" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
             <TextBlock Text="Пароль:" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right"/>
             <PasswordBox Name="PasswordPb" Grid.Row="3" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
-            <CheckBox Name="RememberChB" Grid.Row="4" Grid.Column="2" Content="Запомнить меня" IsChecked="False" />
+          
             <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Center">
                 <Button  Name="LoginBtn" Grid.Row="5" Grid.ColumnSpan="3" Width="200" Content="Войти" Click="LoginBtn_Click" Margin="0 0 10 0" />
                 <Button  Name="RegictrationBtn" Grid.Row="7" Grid.ColumnSpan="3" Width="250"  Content="Зарегистрироваться" Click="RegictrationBtn_Click" />

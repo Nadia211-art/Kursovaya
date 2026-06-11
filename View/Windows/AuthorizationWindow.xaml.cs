@@ -40,7 +40,7 @@ namespace Kursovaya.View.Windows
                 if (App.currentUser != null)
                 {
                     MessageBox.Show("Вы успешно авторизовались!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                    if (App.currentUser.Role.Role1 == "Администратор")
+                    if (App.currentUser.IdRole == 1)
                     {
                         AdminWindow administratorWindow = new AdminWindow();
                         administratorWindow.Show();
@@ -48,7 +48,7 @@ namespace Kursovaya.View.Windows
 
                         Close();
                     }
-                    if (App.currentUser.Role.Role1 == "Пользователь")
+                    if (App.currentUser.IdRole == 2)
                     {
                         MainWindow mainWindow = new MainWindow();
                         mainWindow.Show();

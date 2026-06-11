@@ -42,7 +42,8 @@ namespace Kursovaya.View.Windows
                 MySection newSection = new MySection()
                 {
                     Title = NameTb.Text,
-                    Photo = PhotoTb.Text
+                    Photo = PhotoTb.Text,
+                    Description= DescriptionTb.Text
                 };
 
                 MySection section = App.context.Section.Add(newSection);

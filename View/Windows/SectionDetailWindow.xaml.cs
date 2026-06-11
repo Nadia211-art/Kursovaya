@@ -39,7 +39,6 @@ namespace Kursovaya.View.Windows
             {
                 // Название секции (используйте правильные имена свойств из вашей модели)
                 TitleTbl.Text = _selectedSection.Title;
-                //CoachTbl.Text = _selectedSection.;
                 DescriptionTbl.Text = _selectedSection.Description;
                 PhotoImg.Source = new BitmapImage(new Uri(_selectedSection.Photo, UriKind.RelativeOrAbsolute));
             }

@@ -12,7 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data.Entity; 
+using System.Data.Entity;
+using System.Text.RegularExpressions;
 
 namespace Kursovaya.View.Windows
 {
@@ -53,11 +54,14 @@ namespace Kursovaya.View.Windows
                 MessageBox.Show($"Ошибка загрузки пользователей: {ex.Message}");
             }
         }
+        private bool IsValidTimeFormat(string time)
+        {
+            return Regex.IsMatch(time, @"^([01]\d|2[0-3]):([0-5]\d)$");
+        }
 
-       
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-           
+
             if (DatePicker.SelectedDate == null ||
                 string.IsNullOrWhiteSpace(StartTimeTb.Text) ||
                 string.IsNullOrWhiteSpace(EndTimeTb.Text) ||
@@ -67,21 +71,36 @@ namespace Kursovaya.View.Windows
                 MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
-
-            // Преобразование времени
-            if (!TimeSpan.TryParse(StartTimeTb.Text, out TimeSpan startTime))
+            // Проверка формата (только ЧЧ:ММ)
+            if (!IsValidTimeFormat(StartTimeTb.Text))
             {
-                MessageBox.Show("Некорректный формат времени начала.", "Ошибка");
+                MessageBox.Show("Неверный формат времени начала! Используйте ЧЧ:ММ (например: 14:30)",
+                                "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            if (!TimeSpan.TryParse(EndTimeTb.Text, out TimeSpan endTime))
+            if (!IsValidTimeFormat(EndTimeTb.Text))
             {
-                MessageBox.Show("Некорректный формат времени конца.", "Ошибка");
+                MessageBox.Show("Неверный формат времени конца! Используйте ЧЧ:ММ (например: 17:00)",
+                                "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            Schedule schedule = new Schedule
+            // Преобразуем в TimeSpan
+            TimeSpan startTime = TimeSpan.Parse(StartTimeTb.Text);
+            TimeSpan endTime = TimeSpan.Parse(EndTimeTb.Text);
+
+            // Проверяем, что время начала меньше времени конца
+            if (startTime >= endTime)
+            {
+                MessageBox.Show("Время начала должно быть меньше времени конца!",
+                                "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+        
+       
+
+        Schedule schedule = new Schedule
             {
                 Date = (DateTime)DatePicker.SelectedDate,
                 StartTime = startTime,

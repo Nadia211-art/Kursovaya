@@ -22,8 +22,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Name="TitleTbl" Grid.Row="1" />
-            <TextBlock Name="CoachTbl" Grid.Row="3" />
-            <TextBlock Name="DescriptionTbl" Grid.Row="5" TextWrapping="Wrap"/>
+            <TextBlock Name="DescriptionTbl" Grid.Row="3" TextWrapping="Wrap"/>
         </Grid>
     </Grid>
 </Window>

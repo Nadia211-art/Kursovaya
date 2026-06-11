@@ -18,6 +18,8 @@
             <RowDefinition Height="10" />
             <RowDefinition Height="40" />
             <RowDefinition Height="10" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="50" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
@@ -26,7 +28,9 @@
         <DatePicker Name="DateOfBirthDp" Grid.Row="4" Width="370"/>
         <TextBox Name="PhoneTb" Grid.Row="6" Width="370"/>
         <TextBox Name="EmailTb" Grid.Row="8" Width="370"/>
-        <StackPanel Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Center">
+        <TextBox Name="PhotoTb" Grid.Row="10" Width="370"/>
+        
+        <StackPanel Grid.Row="12" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="EditBtn" Content="Изменить"  Width="180" Click="EditBtn_Click" Margin="0 0 10 0"/>
             <Button Name="EditPhotoBtn" Content="Изменить фотографию" Width="250" Click="EditPhotoBtn_Click"/>
         </StackPanel>

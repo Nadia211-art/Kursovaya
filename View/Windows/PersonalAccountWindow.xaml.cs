@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
+using System.IO;
 
 namespace Kursovaya.View.Windows
 {
@@ -32,6 +34,11 @@ namespace Kursovaya.View.Windows
             DateOfBirthDp.SelectedDate = currentUser.DateOfBirth;
             PhoneTb.Text = currentUser.Phone;
             EmailTb.Text = currentUser.Email;
+            PhotoTb.Text=currentUser.Photo;
+            if (!string.IsNullOrEmpty(currentUser.Photo) && File.Exists(currentUser.Photo))
+            {
+                LoadImage(currentUser.Photo);
+            }
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
@@ -42,20 +49,46 @@ namespace Kursovaya.View.Windows
             App.currentUser.Phone = PhoneTb.Text;
             App.currentUser.Email = EmailTb.Text;
             //currentUser.Photo = PhotoImg.Photo;
-
-            App.context.SaveChanges();
-
             MessageBox.Show("Данные профиля успешно изменены", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-            DialogResult = true;
+            App.context.SaveChanges();
+           
+            
         }
 
         private void EditPhotoBtn_Click(object sender, RoutedEventArgs e)
         {
-            //OpenFileDialog openFileDialog = new OpenFileDialog();
-            //if (openFileDialog.ShowDialog() == true)
-            //{
-            //    PhotoImg. = openFileDialog.FileName;
-            //}
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                openFileDialog.Filter = "Изображения|*.jpg;*.jpeg;*.png;*.bmp;*.gif|Все файлы|*.*";
+                PhotoTb.Text = openFileDialog.FileName;
+                string filePath = openFileDialog.FileName;
+
+                // Загружаем изображение в Image控件
+                LoadImage(filePath);
+            }
+
+          
         }
+        private void LoadImage(string filePath)
+        {
+            try
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(filePath);
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+                PhotoImg.Source = bitmap;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки изображения: {ex.Message}",
+                                "Ошибка",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+            }
+        }
+
     }
 }

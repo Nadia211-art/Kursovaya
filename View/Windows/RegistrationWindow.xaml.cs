@@ -35,6 +35,25 @@ namespace Kursovaya.View.Windows
 
 
             }
+            if(PasswordPb.Password!=RepeatPasswordPb.Password)
+            {
+                MessageBox.Show("Пароли не совпадают!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            string phone = PhoneTb.Text;
+
+            if (phone.Length != 11 && phone[0] != '8' && phone[1] != '9')
+            {
+                //// Все цифры проверим через TryParse или All
+                //bool isDigitsOnly = phone.All(c => char.IsDigit(c));
+
+                MessageBox.Show("Неверный формат номера телефона!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            string email = EmailTb.Text;
+            if (!email.EndsWith("@mail.ru") && !email.EndsWith("@gmail.com"))
+            {
+                MessageBox.Show("Email должен оканчиваться на @mail.ru или @gmail.com",
+                                "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
             else
             {
 
@@ -43,12 +62,14 @@ namespace Kursovaya.View.Windows
                     FullName = FullnameTb.Text,
                     Phone = PhoneTb.Text,
                     Email = EmailTb.Text,
-                    Password = PasswordPb.Password
+                    Password = PasswordPb.Password,
+                    IdRole = 2,
+
                 };
 
                 App.context.User.Add(user);
                 App.context.SaveChanges();
-                MessageBox.Show("Вы успешно зарегистрированы");
+                MessageBox.Show("Вы успешно зарегистрированы", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 AuthorizationWindow authorizationWindow = new AuthorizationWindow();
                 authorizationWindow.Show();
