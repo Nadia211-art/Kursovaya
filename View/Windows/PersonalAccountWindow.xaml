@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovaya.View.Windows"
         mc:Ignorable="d"
-        Title="Личный кабинет" Height="600" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FFD4DFE7">
+        Title="Личный кабинет" Height="700" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FFD4DFE7">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="180" />
@@ -20,6 +20,8 @@
             <RowDefinition Height="10" />
             <RowDefinition Height="40" />
             <RowDefinition Height="10" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="20" />
             <RowDefinition Height="50" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
@@ -29,8 +31,9 @@
         <TextBox Name="PhoneTb" Grid.Row="6" Width="370"/>
         <TextBox Name="EmailTb" Grid.Row="8" Width="370"/>
         <TextBox Name="PhotoTb" Grid.Row="10" Width="370"/>
+        <ComboBox Name="GroupCmb" Grid.Row="12" Width="370"/>
         
-        <StackPanel Grid.Row="12" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="14" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="EditBtn" Content="Изменить"  Width="180" Click="EditBtn_Click" Margin="0 0 10 0"/>
             <Button Name="EditPhotoBtn" Content="Изменить фотографию" Width="250" Click="EditPhotoBtn_Click"/>
         </StackPanel>

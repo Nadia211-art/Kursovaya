@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="90" />
             <RowDefinition Height="1*" />
-            <RowDefinition Height="140" />
+            <RowDefinition Height="135" />
         </Grid.RowDefinitions>
         <Image Source="C:\Users\dns\source\repos\Kursovaya\Resources\Image\боковой фон.png" Grid.RowSpan="3" Stretch="None"/>
         <Image Source="C:\Users\dns\source\repos\Kursovaya\Resources\Image\нижний фон.png" Grid.Row="2" Grid.Column="1" Stretch="None"/>
@@ -38,21 +38,25 @@
                 <RowDefinition Height="10" />
                 <RowDefinition Height="45" />
                 <RowDefinition Height="10" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="10" />
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
 
             <TextBlock  Text="Регистрация в систему" Grid.ColumnSpan="3"  VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold" FontSize="25" FontFamily="Jomolhari" Foreground="#017695"/>
-            <TextBlock  Text="ФИО:" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <TextBox Name="FullnameTb" Grid.Row="1" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
-            <TextBlock  Text="Номер телефона:" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <TextBox Name="PhoneTb" Grid.Row="3" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
-            <TextBlock  Text="Логин(эл.почта):" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <TextBox Name="EmailTb" Grid.Row="5" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
-            <TextBlock  Text="Пароль:" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <PasswordBox Name="PasswordPb" Grid.Row="7" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
-            <TextBlock  Text="Повторите пароль:" Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <PasswordBox Name="RepeatPasswordPb" Grid.Row="9" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
-            <Button  Name="RegistrationBtn" Grid.Row="11" Grid.ColumnSpan="3" Width="230" Content="Зарегистрироваться" Click="RegistrationBtn_Click"/>
+            <TextBlock  Text="Группа:" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <ComboBox Name="GroupCmb" Grid.Row="1" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
+            <TextBlock  Text="ФИО:" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBox Name="FullnameTb" Grid.Row="3" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
+            <TextBlock  Text="Номер телефона:" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBox Name="PhoneTb" Grid.Row="5" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
+            <TextBlock  Text="Логин(эл.почта):" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBox Name="EmailTb" Grid.Row="7" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
+            <TextBlock  Text="Пароль:" Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <PasswordBox Name="PasswordPb" Grid.Row="9" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
+            <TextBlock  Text="Повторите пароль:" Grid.Row="11" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <PasswordBox Name="RepeatPasswordPb" Grid.Row="11" Grid.Column="2" Width="300" HorizontalAlignment="Left"/>
+            <Button  Name="RegistrationBtn" Grid.Row="13" Grid.ColumnSpan="3" Width="230" Content="Зарегистрироваться" Click="RegistrationBtn_Click"/>
         </Grid>
 
     </Grid>

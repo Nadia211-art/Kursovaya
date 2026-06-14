@@ -53,7 +53,7 @@ BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin=
                 <Button Name="SheduleBtn" Content="Расписание занятий" Width="220" Click="SheduleBtn_Click"  Grid.Column="5"/>
                 <Button Name="NewsBtn" Content="Новости" Width="180" Click="NewsBtn_Click"  Grid.Column="7"/>
             </Grid>
-
+            <TextBlock Text="Добро пожаловать! Вы вошли в профиль как администратор" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
             <Frame Name="MainFrame" Grid.Row="2" NavigationUIVisibility="Hidden" />
         </Grid>
     </Grid>

@@ -49,7 +49,8 @@
                 <GridView>
                     <GridViewColumn Header="Студент" Width="300" 
                                     DisplayMemberBinding="{Binding User.FullName}"/>
-
+                    <GridViewColumn Header="Группа" Width="300" 
+                 DisplayMemberBinding="{Binding User.Group.Name}"/>
                     <GridViewColumn Header="Секция" Width="150" 
                                     DisplayMemberBinding="{Binding Section.Title}"/>
 

@@ -69,6 +69,7 @@ namespace Kursovaya.View.Windows
         {
             RegistrationWindow registrationWindow = new RegistrationWindow();
             registrationWindow.Show();
+            Close();
         }
     }
 }

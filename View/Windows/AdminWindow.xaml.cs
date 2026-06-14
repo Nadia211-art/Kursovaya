@@ -24,6 +24,7 @@ namespace Kursovaya.View.Windows
         public AdminWindow()
         {
             InitializeComponent();
+            
         }
 
         private void ApplicationBtn_Click(object sender, RoutedEventArgs e)

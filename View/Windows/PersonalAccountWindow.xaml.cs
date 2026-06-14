@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static System.Net.Mime.MediaTypeNames;
 using System.IO;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Kursovaya.View.Windows
 {
@@ -27,7 +28,9 @@ namespace Kursovaya.View.Windows
         public PersonalAccountWindow(User currentUser)
         {
             InitializeComponent();
-
+            GroupCmb.SelectedValuePath = "IdGroup";
+            GroupCmb.DisplayMemberPath = "Name";
+            GroupCmb.ItemsSource = App.context.Group.ToList();
             DataContext = App.currentUser;
             // Заполняем поля текущими данными
             FullNameTb.Text = currentUser.FullName;
@@ -35,6 +38,7 @@ namespace Kursovaya.View.Windows
             PhoneTb.Text = currentUser.Phone;
             EmailTb.Text = currentUser.Email;
             PhotoTb.Text=currentUser.Photo;
+            GroupCmb.Text = currentUser.Group.Name;
             if (!string.IsNullOrEmpty(currentUser.Photo) && File.Exists(currentUser.Photo))
             {
                 LoadImage(currentUser.Photo);
@@ -43,12 +47,15 @@ namespace Kursovaya.View.Windows
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Обновляем данные новости
+          
             App.currentUser.FullName = FullNameTb.Text;
             App.currentUser.DateOfBirth = DateOfBirthDp.SelectedDate;
             App.currentUser.Phone = PhoneTb.Text;
             App.currentUser.Email = EmailTb.Text;
-            //currentUser.Photo = PhotoImg.Photo;
+            App.currentUser.Photo = PhotoTb.Text;
+            App.currentUser.IdGroup = ((Group)GroupCmb.SelectedItem).IdGroup;
+
+
             MessageBox.Show("Данные профиля успешно изменены", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
             App.context.SaveChanges();
            

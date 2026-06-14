@@ -31,6 +31,16 @@ namespace Kursovaya.View.Pages
         private void SectionLb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MySection selectedSection = SectionLb.SelectedItem as MySection;
+
+            //if (selectedSection != null)
+            //{
+            //    // Передаем выбранную секцию в окно деталей
+            //    SectionDetailWindow sectionDetailWindow = new SectionDetailWindow(selectedSection);
+            //    sectionDetailWindow.ShowDialog();
+
+            //    // Сбрасываем выделение
+            //    SectionLb.SelectedItem = null;
+            //}
         }
 
         private void AddSectionBtn_Click(object sender, RoutedEventArgs e)
